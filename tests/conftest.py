@@ -3,7 +3,7 @@ from __future__ import absolute_import, division, print_function
 import atexit
 import os
 import sys
-from distutils.version import StrictVersion
+from distutils.version import StrictVersion  # pylint: disable=import-error
 
 import pytest
 from tests.request_mock import RequestMock

@@ -1,5 +1,13 @@
 [Messages Control]
-disable=invalid-name, missing-docstring, bad-continuation, fixme, star-args, redefined-builtin, no-name-in-module
+disable=invalid-name,
+    missing-docstring,
+    bad-continuation,  # disagrees with black
+    fixme,
+    star-args,
+    redefined-builtin,
+    no-name-in-module,
+    wrong-import-order, # disagrees with isort
+    ungrouped-imports,  # disagrees with isort
 
 [Basic]
 # Variable names can be 1 to 31 characters long, with lowercase and underscores
