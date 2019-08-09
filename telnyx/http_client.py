@@ -130,7 +130,7 @@ class HTTPClient(object):
                 if response is not None:
                     return response
                 else:
-                    raise connection_error  # pylint: disable=E0702
+                    raise connection_error  # pylint: disable=raising-bad-type
 
     def request(self, method, url, headers, post_data=None):
         raise NotImplementedError("HTTPClient subclasses must implement `request`")
