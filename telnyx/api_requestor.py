@@ -29,10 +29,6 @@ def _encode_nested_dict(key, data, fmt="%s[%s]"):
     return d
 
 
-def _now_ms():
-    return int(round(time.time() * 1000))
-
-
 def _api_encode(data):
     for key, value in six.iteritems(data):
         key = util.utf8(key)
