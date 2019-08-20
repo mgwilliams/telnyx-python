@@ -47,6 +47,7 @@ setup(
     packages=find_packages(exclude=["tests", "tests.*"]),
     zip_safe=False,
     install_requires=[
+        'aiohttp >= 3.5; python_version >= "3.5"',
         'requests >= 2.20; python_version >= "3.0"',
         'requests[security] >= 2.20; python_version < "3.0"',
         "PyNaCl",

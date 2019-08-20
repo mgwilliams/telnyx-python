@@ -20,7 +20,7 @@ fmtcheck:
 	pipenv run tox -e fmt -- --check --verbose
 
 lint:
-	pipenv run tox -e lint
+	pipenv run tox -e py27-lint,py37-lint
 
 pylintcheck:
 	pipenv run tox -e pylint

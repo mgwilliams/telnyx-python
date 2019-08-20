@@ -70,3 +70,7 @@ def setup_telnyx():
 @pytest.fixture
 def request_mock(mocker):
     return RequestMock(mocker)
+
+
+if sys.version_info < (3, 5):
+    collect_ignore = ["aio"]
