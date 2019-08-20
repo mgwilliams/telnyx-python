@@ -52,15 +52,6 @@ def _api_encode(data):
             yield (key, util.utf8(value))
 
 
-def _build_api_url(url, query):
-    scheme, netloc, path, base_query, fragment = urlsplit(url)
-
-    if base_query:
-        query = "%s&%s" % (base_query, query)
-
-    return urlunsplit((scheme, netloc, path, query, fragment))
-
-
 class APIRequestor(object):
     def __init__(self, key=None, client=None, api_base=None):
         self.api_base = api_base or telnyx.api_base
@@ -76,6 +67,15 @@ class APIRequestor(object):
         )
 
         self._last_request_metrics = None
+
+    @classmethod
+    def build_api_url(self, url, query):
+        scheme, netloc, path, base_query, fragment = urlsplit(url)
+
+        if base_query:
+            query = "%s&%s" % (base_query, query)
+
+        return urlunsplit((scheme, netloc, path, query, fragment))
 
     @classmethod
     def format_app_info(cls, info):
@@ -195,11 +195,7 @@ class APIRequestor(object):
 
         return headers
 
-    def request_raw(self, method, url, params=None, supplied_headers=None):
-        """
-        Mechanism for issuing an API call
-        """
-
+    def prepare_raw_request(self, method, url, params=None, supplied_headers=None):
         if self.api_key:
             my_api_key = self.api_key
         else:
@@ -224,7 +220,7 @@ class APIRequestor(object):
         if method == "get" or method == "head" or method == "delete":
             encoded_params = self.build_query_params(params)
             if params:
-                abs_url = _build_api_url(abs_url, encoded_params)
+                abs_url = self.build_api_url(abs_url, encoded_params)
             post_data = None
         elif method == "post" or method == "patch":
             if (
@@ -255,6 +251,16 @@ class APIRequestor(object):
 
         util.log_info("Request to Telnyx api", method=method, path=abs_url)
         util.log_debug("Post details", post_data=encoded_params)
+
+        return abs_url, headers, post_data, my_api_key
+
+    def request_raw(self, method, url, params=None, supplied_headers=None):
+        """
+        Mechanism for issuing an API call
+        """
+        abs_url, headers, post_data, my_api_key = self.prepare_raw_request(
+            method, url, params=params, supplied_headers=supplied_headers
+        )
 
         rbody, rcode, rheaders = self._client.request_with_retries(
             method, abs_url, headers, post_data
