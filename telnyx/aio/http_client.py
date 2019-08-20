@@ -11,6 +11,7 @@ from aiohttp import (
 from aiohttp.client import ClientSession
 from telnyx import error
 from telnyx.http_client import HTTPClient
+from telnyx import util
 
 
 class TelnyxClient(HTTPClient):
