@@ -59,6 +59,7 @@ setup(
         "pytest-mock >= 1.7",
         "pytest-xdist >= 1.22",
         "pytest-cov >= 2.5",
+        'pytest-asyncio; python_version >= "3.5"',
     ],
     cmdclass={"test": PyTest},
     classifiers=[

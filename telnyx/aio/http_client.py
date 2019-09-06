@@ -130,5 +130,5 @@ class TelnyxClient(HTTPClient):
         msg = textwrap.fill(msg) + f"\n\n(Network error: {err})"
         raise error.APIConnectionError(msg, should_retry=should_retry)
 
-    async def close(self):
-        await self._session.close()
+    def close(self):
+        self._session.close()

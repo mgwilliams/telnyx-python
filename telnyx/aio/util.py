@@ -36,6 +36,8 @@ def convert_to_telnyx_object(resp, api_key=None):
         load_object_classes()
     types = OBJECT_CLASSES.copy()
 
+    print(types)
+
     # If we get a TelnyxResponse, we'll want to return a
     # TelnyxObject with the last_response field filled out with
     # the raw API response information

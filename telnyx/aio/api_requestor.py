@@ -1,3 +1,5 @@
+import telnyx.aio
+
 from telnyx.aio.http_client import TelnyxClient
 from telnyx.api_requestor import APIRequestor as BaseAPIRequestor
 from telnyx import util
@@ -8,7 +10,10 @@ class APIRequestor(BaseAPIRequestor):
         from telnyx import verify_ssl_certs as verify
         from telnyx import proxy
 
-        client = client or TelnyxClient(verify_ssl_certs=verify, proxy=proxy)
+        client = (
+            client
+            or telnyx.aio.default_http_client
+            or TelnyxClient(verify_ssl_certs=verify, proxy=proxy))
         super(APIRequestor, self).__init__(key=key, client=client, api_base=api_base)
 
     async def request(self, method, url, params=None, headers=None):
