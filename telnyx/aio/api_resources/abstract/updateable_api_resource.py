@@ -1,6 +1,7 @@
 from urllib.parse import quote_plus
 
-from telnyx.aio import api_requestor, util
+from telnyx import util
+from telnyx.aio import api_requestor, util as aioutil
 from telnyx.aio.api_resources.abstract.api_resource import APIResource
 
 
@@ -10,7 +11,7 @@ class UpdateableAPIResource(APIResource):
         requestor = api_requestor.APIRequestor(api_key)
         params = util.rewrite_reserved_words(params)
         response, api_key = requestor.request("patch", url, params)
-        return util.convert_to_telnyx_object(response, api_key)
+        return aioutil.convert_to_telnyx_object(response, api_key)
 
     @classmethod
     async def modify(cls, sid, **params):
