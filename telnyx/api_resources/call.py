@@ -1,5 +1,5 @@
 from telnyx.api_resources.abstract import CreateableAPIResource
-from telnyx.api_resources.abstract.meta import ResourceMeta, Action
+from telnyx.api_resources.abstract.meta import Action, ResourceMeta
 from telnyx.six import with_metaclass
 
 

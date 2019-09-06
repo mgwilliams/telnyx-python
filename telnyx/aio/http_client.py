@@ -1,17 +1,17 @@
+import textwrap
 from asyncio import sleep
 
-import textwrap
 from aiohttp import (
+    ClientConnectionError,
     ClientError,
     ClientSSLError,
-    ClientConnectionError,
     ServerConnectionError,
     ServerTimeoutError,
 )
 from aiohttp.client import ClientSession
-from telnyx import error
+
+from telnyx import error, util
 from telnyx.http_client import HTTPClient
-from telnyx import util
 
 
 class TelnyxClient(HTTPClient):

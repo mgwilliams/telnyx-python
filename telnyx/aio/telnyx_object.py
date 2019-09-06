@@ -1,6 +1,6 @@
-from telnyx.telnyx_object import TelnyxObject as BaseTelnyxObject
-from telnyx.aio.util import convert_to_telnyx_object
 from telnyx.aio.api_requestor import APIRequestor
+from telnyx.aio.util import convert_to_telnyx_object
+from telnyx.telnyx_object import TelnyxObject as BaseTelnyxObject
 
 
 class TelnyxObject(BaseTelnyxObject):

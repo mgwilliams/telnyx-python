@@ -1,6 +1,6 @@
-from telnyx.aio.api_resources.abstract.api_resource import APIResource
-from telnyx.aio import api_requestor
 from telnyx import util
+from telnyx.aio import api_requestor
+from telnyx.aio.api_resources.abstract.api_resource import APIResource
 from telnyx.aio.util import convert_to_telnyx_object
 
 

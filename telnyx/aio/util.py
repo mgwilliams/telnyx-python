@@ -1,6 +1,5 @@
+from telnyx.aio import api_resources, telnyx_object
 from telnyx.telnyx_response import TelnyxResponse
-from telnyx.aio import telnyx_object, api_resources
-
 
 OBJECT_CLASSES = {}
 

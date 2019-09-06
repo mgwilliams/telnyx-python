@@ -1,7 +1,8 @@
+from urllib.parse import quote_plus
+
+from telnyx import util
 from telnyx.aio import api_requestor
 from telnyx.aio.util import convert_to_telnyx_object
-from urllib.parse import quote_plus
-from telnyx import util
 
 
 def nested_resource_class_methods(resource, path=None, operations=None):

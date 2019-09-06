@@ -1,5 +1,4 @@
-from telnyx.aio.api_resources.abstract import UpdateableAPIResource
-from telnyx.aio.api_resources.abstract import ListableAPIResource
+from telnyx.aio.api_resources.abstract import ListableAPIResource, UpdateableAPIResource
 
 
 class ShortCode(ListableAPIResource, UpdateableAPIResource):

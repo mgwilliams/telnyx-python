@@ -1,8 +1,10 @@
-from telnyx.aio.api_resources.abstract import CreateableAPIResource
-from telnyx.aio.api_resources.abstract import DeletableAPIResource
-from telnyx.aio.api_resources.abstract import UpdateableAPIResource
-from telnyx.aio.api_resources.abstract import ListableAPIResource
-from telnyx.aio.api_resources.abstract import nested_resource_class_methods
+from telnyx.aio.api_resources.abstract import (
+    CreateableAPIResource,
+    DeletableAPIResource,
+    ListableAPIResource,
+    UpdateableAPIResource,
+    nested_resource_class_methods,
+)
 
 
 @nested_resource_class_methods("phone_number", operations=["list"])

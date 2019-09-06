@@ -1,6 +1,7 @@
+from urllib.parse import quote_plus
+
 from telnyx.aio import api_requestor, util
 from telnyx.aio.api_resources.abstract.api_resource import APIResource
-from urllib.parse import quote_plus
 
 
 class UpdateableAPIResource(APIResource):

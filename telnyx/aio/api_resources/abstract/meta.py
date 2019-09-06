@@ -10,4 +10,5 @@ class ResourceMeta(BaseResourceMeta):
             requestor = api_requestor.APIRequestor(api_key)
             response, api_key = await requestor.request(action.http_method, url, params)
             return util.convert_to_telnyx_object(response, api_key)
+
         return f
