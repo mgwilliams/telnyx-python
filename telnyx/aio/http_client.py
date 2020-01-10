@@ -24,7 +24,7 @@ class TelnyxClient(HTTPClient):
 
         super(TelnyxClient, self).__init__(verify_ssl_certs=verify_ssl_certs, **kwargs)
         self._timeout = timeout
-        self._session = session or ClientSession()
+        self._session = session or ClientSession
 
     async def request_with_retries(self, method, url, headers, post_data=None):
         num_retries = 0
@@ -67,14 +67,15 @@ class TelnyxClient(HTTPClient):
             kwargs["proxies"] = self._proxy
 
         try:
-            result = await self._session.request(
-                method,
-                url,
-                headers=headers,
-                data=post_data,
-                timeout=self._timeout,
-                **kwargs,
-            )
+            async with self._session() as session:
+                result = await session.request(
+                    method,
+                    url,
+                    headers=headers,
+                    data=post_data,
+                    timeout=self._timeout,
+                    **kwargs,
+                )
             content = await result.text()
             status_code = result.status
         except Exception as e:
